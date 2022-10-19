@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static  String LOGIN_URL = "";
     private static  String DOWNLOAD = "";
     private static  String VERSION = "";
-    private static  String APP = "2";  //这里不变，变version  测试git
+    private static  String APP = "2";  //这里不变，变version
 
 
     /**
@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 4、Update文件
      * 5、KeepAlive文件
      */
-
     private static final String LOGIN = "/member/login";
     private static final String GET_TB_INFO = "/useraccount/itemlist";
     private static final String GET_ADDRESS = "/identify/realname_result";
@@ -138,28 +137,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-//    private static final String PT_NAME = "tianWangXing";
-//    private static final String TITLE = "天王星助手";
-//    private static final String SUCCESS_TI_SHI = "天王星接单成功";
-//    private static final String TI_SHI = "天王星App未安装";
-//    private static final String CHANNELID = "tianwangxingSuccess";
-//    private static final String APK_PACKAGE = "com.zzhshop.tianwangxing";
-//    private static final String DEVICE = "device-id";
-//    private static int ICON = R.mipmap.tianwangxing;
-//    private static final int JIE_DAN_SUCCESS = R.raw.twx_success;
-//    private static final int JIE_DAN_FAIL = R.raw.twx_fail;
+    private static final String PT_NAME = "tianWangXing";
+    private static final String TITLE = "牛郎星助手";
+    private static final String SUCCESS_TI_SHI = "牛郎星接单成功";
+    private static final String TI_SHI = "牛郎星App未安装";
+    private static final String CHANNELID = "tianwangxingSuccess";
+    private static final String APK_PACKAGE = "com.zzhshop.tianwangxing";
+    private static final String DEVICE = "device-id";
+    private static int ICON = R.mipmap.tianwangxing;
+    private static final int JIE_DAN_SUCCESS = R.raw.twx_success;
+    private static final int JIE_DAN_FAIL = R.raw.twx_fail;
 
 
-    private static final String PT_NAME = "tianLangXing";
-    private static final String TITLE = "天狼星助手";
-    private static final String SUCCESS_TI_SHI = "天狼星接单成功";
-    private static final String TI_SHI = "天狼星App未安装";
-    private static final String CHANNELID = "tianlangxingSuccess";
-    private static final String APK_PACKAGE = "com.zzhshop.tianlangxing";
-    private static final String DEVICE = "device_id";
-    private static int ICON = R.mipmap.tianlangxing;
-    private static final int JIE_DAN_SUCCESS = R.raw.tlx_success;
-    private static final int JIE_DAN_FAIL = R.raw.tlx_fail;
+//    private static final String PT_NAME = "tianLangXing";
+//    private static final String TITLE = "天狼星助手";
+//    private static final String SUCCESS_TI_SHI = "天狼星接单成功";
+//    private static final String TI_SHI = "天狼星App未安装";
+//    private static final String CHANNELID = "tianlangxingSuccess";
+//    private static final String APK_PACKAGE = "com.zzhshop.tianlangxing";
+//    private static final String DEVICE = "device_id";
+//    private static int ICON = R.mipmap.tianlangxing;
+//    private static final int JIE_DAN_SUCCESS = R.raw.tlx_success;
+//    private static final int JIE_DAN_FAIL = R.raw.tlx_fail;
 
 //    private static final String PT_NAME = "tianMaXingKong";
 //    private static final String TITLE = "天马星空助手";
@@ -361,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String[] gongGao = ptAddrObj.getString("ptAnnoun").split(";");
                             announcementDialog(gongGao);
                         }catch (Exception e){
-                            sendLog("获取网址："+e.getMessage());
+                            sendLog2("获取网址："+e.getMessage());
                         }
 
                     }
@@ -369,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("服务器出现问题啦~");
+                        sendLog2("服务器出现问题啦~");
                     }
                 });
     }
@@ -409,14 +408,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 sendLog(loginJsonObj.getString("msg"));
                             }
                         }catch (Exception e){
-                            sendLog("登录："+e.getMessage());
+                            sendLog2("登录："+e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("登录ERR："+response.getException().toString());
+                        sendLog2("登录ERR："+response.getException().toString());
                     }
                 });
     }
@@ -467,14 +466,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 sendLog(tbObj.getString("msg"));
                             }
                         }catch (Exception e){
-                            sendLog(e.getMessage());
+                            sendLog2(e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("获取淘宝号："+response.getException());
+                        sendLog2("获取淘宝号："+response.getException());
                     }
                 });
     }
@@ -532,9 +531,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onSuccess(Response<String> response) {
-                        JSONObject obj = JSONObject.parseObject(response.body());
-                        address = obj.getJSONObject("data").getString("address");
-                        checkTbInfo();
+                        /**
+                         * {"code":401,"msg":"已在其他设备上登录","time":1666167598,"data":[]}
+                         */
+                        try {
+                            JSONObject obj = JSONObject.parseObject(response.body());
+                            address = obj.getJSONObject("data").getString("address");
+                            checkTbInfo();
+                        }catch (Exception e){
+                            sendLog2("getAddress："+e.getMessage());
+                        }
                     }
                 });
     }
@@ -559,7 +565,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if("200".equals(obj.getString("code"))){  //已验号
                             getTaskParam();
                         }else {
-                            sendLog(obj.getString("msg"));
+                            sendLog2(obj.getString("msg"));
                         }
                     }
                 });
@@ -598,14 +604,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 //{"code":400,"msg":"过于频繁提交请稍后重试","time":1640954628,"data":[]}
                             }
                         }catch (Exception e){
-                            sendLog("getTaskParam："+e.getMessage());
+                            sendLog2("getTaskParam："+e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("getTaskParam："+response.getException());
+                        sendLog2("getTaskParam："+response.getException());
                     }
                 });
     }
@@ -637,10 +643,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     cancelTask(taskId);
                                     return;
                                 }
-                                sendLog("恭喜您,接单成功!  佣金："+wage);
+                                sendLog2("恭喜您,接单成功!  佣金："+wage);
                                 receiveSuccess(wage);
-                                sendLog("-------------------------------");
-                                sendLog("商品图（复制网址到浏览器打开）："+obj.getJSONObject("data").getString("img"));
+                                sendLog2("-------------------------------");
+                                sendLog2("商品图（复制网址到浏览器打开）："+obj.getJSONObject("data").getString("img"));
                                 playMusic(JIE_DAN_SUCCESS,3000,2);
                             }else {
                                 //一定要点击停止接单
@@ -652,14 +658,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 jieDan();
                             }
                         }catch (Exception e){
-                            sendLog("接取任务:"+e.getMessage());
+                            sendLog2("接取任务:"+e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("接取任务ERR:"+response.getException());
+                        sendLog2("接取任务ERR:"+response.getException());
                         jieDan();
                     }
                 });
@@ -711,14 +717,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 sendLog("放弃任务失败："+obj.getString("msg"));
                             }
                         }catch (Exception e){
-                            sendLog("取消任务"+e.getMessage());
+                            sendLog2("取消任务"+e.getMessage());
                         }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        sendLog("取消任务ERR："+response.getException());
+                        sendLog2("取消任务ERR："+response.getException());
                     }
                 });
     }
@@ -744,7 +750,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //{"code":200,"msg":"停止接单","time":1662438811,"data":[]}
                             OkGo.getInstance().cancelAll();
                         }catch (Exception e){
-
+                            sendLog2(e.getMessage());
                         }
                     }
                 });
@@ -798,11 +804,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void sendLog(String log){
         scrollToTvLog();
+        if(tvLog.getLineCount() > 40){
+            tvLog.setText("");
+        }
         tvLog.append(new SimpleDateFormat("HH:mm:ss").format(new Date()) + ": "+log+"\n");
-        //如果日志大于100条，则清空
-//        if(tvLog.getLineCount() > 100){
-//            tvLog.setText("");
-//        }
+    }
+
+    public void sendLog2(String log){
+        scrollToTvLog();
+        tvLog.append(new SimpleDateFormat("HH:mm:ss").format(new Date()) + ": "+log+"\n");
     }
 
 
@@ -990,7 +1000,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notificationManager.cancel(2);
         //移除所有通知
         //notificationManager.cancelAll();
-
     }
 
 }

@@ -3,13 +3,13 @@
     package="com.example.tianwangxing">
 
 
-<!--    <queries>-->
-<!--        <package android:name="com.zzhshop.tianwangxing" />-->
-<!--    </queries>-->
-
     <queries>
-        <package android:name="com.zzhshop.tianlangxing" />
+        <package android:name="com.zzhshop.tianwangxing" />
     </queries>
+
+<!--    <queries>-->
+<!--        <package android:name="com.zzhshop.tianlangxing" />-->
+<!--    </queries>-->
 
 <!--    <queries>-->
 <!--        <package android:name="com.zzhshop.tianmaxingkong" />-->

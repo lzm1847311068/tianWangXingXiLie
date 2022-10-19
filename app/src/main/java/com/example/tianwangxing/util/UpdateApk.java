@@ -22,8 +22,8 @@ import com.lzy.okgo.request.base.Request;
  */
 public class UpdateApk {
 
-//    private static String PT_URL = "tianWangXing";
-    private static String PT_URL = "tianLangXing";
+    private static String PT_URL = "tianWangXing";
+//    private static String PT_URL = "tianLangXing";
 //private static String PT_URL = "tianMaXingKong";
 
     public static void update(Activity context){     //http://47.94.255.103
