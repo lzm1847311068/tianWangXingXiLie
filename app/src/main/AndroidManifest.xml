@@ -3,13 +3,13 @@
     package="com.example.tianwangxing">
 
 
-    <queries>
-        <package android:name="com.zzhshop.tianwangxing" />
-    </queries>
-
 <!--    <queries>-->
-<!--        <package android:name="com.zzhshop.tianlangxing" />-->
+<!--        <package android:name="com.zzhshop.tianwangxing" />-->
 <!--    </queries>-->
+
+    <queries>
+        <package android:name="com.zzhshop.tianlangxing" />
+    </queries>
 
 <!--    <queries>-->
 <!--        <package android:name="com.zzhshop.tianmaxingkong" />-->
@@ -29,9 +29,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/tianwangxing"
+        android:icon="@mipmap/tianlangxing"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/tianwangxing"
+        android:roundIcon="@mipmap/tianlangxing"
         android:supportsRtl="true"
         android:theme="@style/Theme.TianWangXing"
         android:usesCleartextTraffic="true">

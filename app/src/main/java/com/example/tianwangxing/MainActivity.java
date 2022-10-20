@@ -137,28 +137,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    private static final String PT_NAME = "tianWangXing";
-    private static final String TITLE = "牛郎星助手";
-    private static final String SUCCESS_TI_SHI = "牛郎星接单成功";
-    private static final String TI_SHI = "牛郎星App未安装";
-    private static final String CHANNELID = "tianwangxingSuccess";
-    private static final String APK_PACKAGE = "com.zzhshop.tianwangxing";
-    private static final String DEVICE = "device-id";
-    private static int ICON = R.mipmap.tianwangxing;
-    private static final int JIE_DAN_SUCCESS = R.raw.twx_success;
-    private static final int JIE_DAN_FAIL = R.raw.twx_fail;
+//    private static final String PT_NAME = "tianWangXing";
+//    private static final String TITLE = "牛郎星助手";
+//    private static final String SUCCESS_TI_SHI = "牛郎星接单成功";
+//    private static final String TI_SHI = "牛郎星App未安装";
+//    private static final String CHANNELID = "tianwangxingSuccess";
+//    private static final String APK_PACKAGE = "com.zzhshop.tianwangxing";
+//    private static final String DEVICE = "device-id";
+//    private static int ICON = R.mipmap.tianwangxing;
+//    private static final int JIE_DAN_SUCCESS = R.raw.twx_success;
+//    private static final int JIE_DAN_FAIL = R.raw.twx_fail;
 
 
-//    private static final String PT_NAME = "tianLangXing";
-//    private static final String TITLE = "天狼星助手";
-//    private static final String SUCCESS_TI_SHI = "天狼星接单成功";
-//    private static final String TI_SHI = "天狼星App未安装";
-//    private static final String CHANNELID = "tianlangxingSuccess";
-//    private static final String APK_PACKAGE = "com.zzhshop.tianlangxing";
-//    private static final String DEVICE = "device_id";
-//    private static int ICON = R.mipmap.tianlangxing;
-//    private static final int JIE_DAN_SUCCESS = R.raw.tlx_success;
-//    private static final int JIE_DAN_FAIL = R.raw.tlx_fail;
+    private static final String PT_NAME = "tianLangXing";
+    private static final String TITLE = "织女星助手";
+    private static final String SUCCESS_TI_SHI = "织女星接单成功";
+    private static final String TI_SHI = "织女星App未安装";
+    private static final String CHANNELID = "tianlangxingSuccess";
+    private static final String APK_PACKAGE = "com.zzhshop.tianlangxing";
+    private static final String DEVICE = "device_id";
+    private static int ICON = R.mipmap.tianlangxing;
+    private static final int JIE_DAN_SUCCESS = R.raw.tlx_success;
+    private static final int JIE_DAN_FAIL = R.raw.tlx_fail;
 
 //    private static final String PT_NAME = "tianMaXingKong";
 //    private static final String TITLE = "天马星空助手";
@@ -524,7 +524,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HttpClient.getInstance().get(GET_ADDRESS, LOGIN_URL)
                 .headers("authorization",authorization)
                 .headers("user-agent","Dart/2.13 (dart:io)")
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("version",VERSION)
                 .headers("app",APP)
                 .execute(new StringCallback() {
@@ -555,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HttpClient.getInstance().get(CHECK_TB_INFO+tbId, LOGIN_URL)
                 .headers("authorization",authorization)
                 .headers("user-agent","Dart/2.13 (dart:io)")
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("version",VERSION)
                 .headers("app",APP)
                 .execute(new StringCallback() {
@@ -584,7 +584,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .params("account_id",tbId)
                 .headers("authorization",authorization)
                 .headers("user-agent","Dart/2.13 (dart:io)")
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("version",VERSION)
                 .headers("app",APP)
                 .headers("Content-Type","application/json;charset=UTF-8")
@@ -624,7 +624,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HttpClient.getInstance().get(GET_TASK+taskId+"&lat="+jingDu+"&lng="+weiDu+"&address="+address, LOGIN_URL)
                 .headers("authorization",authorization)
                 .headers("user-agent","Dart/2.13 (dart:io)")
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("version",VERSION)
                 .headers("app",APP)
                 .headers("Content-Type","application/json;charset=UTF-8")
@@ -697,7 +697,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .headers("app",APP)
                 .headers("authorization",authorization)
                 .headers("version",VERSION)
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("Content-Type","application/json;charset=UTF-8")
                 .headers("user-agent","Dart/2.13 (dart:io)")
                 .execute(new StringCallback() {
@@ -739,7 +739,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .headers("app",APP)
                 .headers("authorization",authorization)
                 .headers("version",VERSION)
-                .headers("DEVICE",decId)
+                .headers(DEVICE,decId)
                 .headers("user-agent","Dart/2.13 (dart:io)")
                 .execute(new StringCallback() {
                     @Override

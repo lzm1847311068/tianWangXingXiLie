@@ -7,14 +7,14 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.example.tianwangxing"
-//        applicationId "com.example.tianlangxing"
+//        applicationId "com.example.tianwangxing"
+        applicationId "com.example.tianlangxing"
 //        applicationId "com.example.tianmaxingkong"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0.4"
 //        versionName "1.0.5"
+        versionName "1.0.5"
 //        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -36,9 +36,9 @@ android {
     applicationVariants.all{ variant->
         variant.outputs.all { output->
             if(variant.buildType.name.equals('release')){
-                outputFileName = "天王星助手v" + defaultConfig.versionName + ".apk"
-//                outputFileName = "天狼星助手v" + defaultConfig.versionName + ".apk"
-//                outputFileName = "天马星空助手v" + defaultConfig.versionName + ".apk"
+//                outputFileName = "牛郎星助手v" + defaultConfig.versionName + ".apk"
+                outputFileName = "织女星助手v" + defaultConfig.versionName + ".apk"
+//                outputFileName = "日月星辰助手v" + defaultConfig.versionName + ".apk"
             }
             if(variant.buildType.name.equals('beta')){
 
