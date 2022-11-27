@@ -43,7 +43,7 @@ public class KeepAliveService extends Service {
     private static int ICON = R.mipmap.tianlangxing;
     private static String CHANNELID = "tianlangxing";
 
-//    private static String SUCCESS_TI_SHI = "天马星空助手";
+//    private static String SUCCESS_TI_SHI = "日月星辰助手";
 //    private static int ICON = R.mipmap.tianmaxingkong;
 //    private static String CHANNELID = "tianmaxingkong";
 

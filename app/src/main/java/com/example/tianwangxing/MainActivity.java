@@ -161,16 +161,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int JIE_DAN_FAIL = R.raw.tlx_fail;
 
 //    private static final String PT_NAME = "tianMaXingKong";
-//    private static final String TITLE = "天马星空助手";
-//    private static final String SUCCESS_TI_SHI = "天马星空接单成功";
-//    private static final String TI_SHI = "天马星空App未安装";
+//    private static final String TITLE = "日月星辰助手";
+//    private static final String SUCCESS_TI_SHI = "日月星辰接单成功";
+//    private static final String TI_SHI = "日月星辰App未安装";
 //    private static final String CHANNELID = "tianmaxingkongSuccess";
 //    private static final String APK_PACKAGE = "com.zzhshop.tianmaxingkong";
 //    private static final String DEVICE = "device_id";
 //    private static int ICON = R.mipmap.tianmaxingkong;
 //    private static final int JIE_DAN_SUCCESS = R.raw.tmxk_success;
 //    private static final int JIE_DAN_FAIL = R.raw.tmxk_fail;
-
 
 
 
@@ -252,19 +251,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_start:
-
                 if("".equals(etYj1.getText().toString().trim())){
                     etYj1.setText("1");
                 }
                 if(Double.parseDouble(etYj1.getText().toString().trim()) > 4){
                     etYj1.setText("4");
                 }
-
                 minYj = Double.parseDouble(etYj1.getText().toString().trim());
                 //10-200  保留5位
                 jingDu = new BigDecimal(10+Math.random()*(200-10)).setScale(5,BigDecimal.ROUND_HALF_UP).toString();
                 weiDu = new BigDecimal(10+Math.random()*(200-10)).setScale(5,BigDecimal.ROUND_HALF_UP).toString();
-
                 /*
                 先清除掉之前的Handler中的Runnable，不然会和之前的任务一起执行多个
                  */
@@ -775,9 +771,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param milliseconds 需要震动的毫秒数
      */
     private void playMusic(int voiceResId, long milliseconds,int total){
-
         count = total;//不然会循环播放
-
         //播放语音
         MediaPlayer player = MediaPlayer.create(MainActivity.this, voiceResId);
         player.start();
@@ -787,8 +781,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //播放完成事件
                 if(count != 0){
                     player.start();
+                    count --;
                 }
-                count --;
             }
         });
 

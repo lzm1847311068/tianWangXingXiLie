@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">牛郎星助手</string>
-<!--    <string name="app_name">天狼星助手</string>-->
-<!--    <string name="app_name">天马星空助手</string>-->
+<!--    <string name="app_name">牛郎星助手</string>-->
+    <string name="app_name">织女星助手</string>
+<!--    <string name="app_name">日月星辰助手</string>-->
 </resources>
